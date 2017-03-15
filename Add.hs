@@ -27,10 +27,10 @@ getAddR x y = selectRep $ do
     provideRep $ defaultLayout $ do
         setTitle "Addition"
         [whamlet|#{x} + #{y} = #{z}|]
-    provideJson $ c
+    provideJson $ z
   where
     z = x + y
-    c = Calc x y "+" z
+ 
 
 --stack build to check it works --
 -- stack exec Kalk to run it--

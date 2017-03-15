@@ -26,10 +26,10 @@ getMultiR x y = selectRep $ do
     provideRep $ defaultLayout $ do
         setTitle "Multiplication"
         [whamlet|#{x} * #{y} = #{z}|]
-    provideJson $ c
+    provideJson $ z
   where
     z = x * y
-    c = Calculator x y "*" z
+ 
 
 --stack build to check it works --
 -- stack exec Kalk to run it--

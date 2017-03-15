@@ -12,6 +12,7 @@ import Add
 import Sub
 import Home
 import Multi
+import Divide
 
 
 mkYesodDispatch "App" resourcesApp

@@ -24,10 +24,9 @@ getSubR x y = selectRep $ do
 	provideRep $ defaultLayout $ do 
 		setTitle "Subtraction"
 		[whamlet|#{x} - #{y} = #{z}|] --html presentation of method--
-	provideJson $ c --json representation--
+	provideJson $ z --json representation--
    where 
      z = x - y
-     c = Calcs x y "-" z 
 
 --to add a new module drag the Kalk.cabal file and edit it--
 --adding the module name to the list--     
