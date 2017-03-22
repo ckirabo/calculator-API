@@ -8,23 +8,17 @@ import Foundation
 import Yesod.Core
 import Data.Aeson
 import GHC.Generics
-
---haskell that interacts with the json side of things .. week 5 --
-data Calcs = Calcs{
- firstValue :: Int,
- secondValue :: Int, 
- operator :: String,
- result :: Int	
-}deriving (Generic)
-
-instance ToJSON Calcs
+import Calc
 
 getSubR :: Int -> Int -> Handler TypedContent 
 getSubR x y = selectRep $ do 
 	provideRep $ defaultLayout $ do 
 		setTitle "Subtraction"
 		[whamlet|#{x} - #{y} = #{z}|] --html presentation of method--
-	provideJson $ z --json representation--
+	provideJson $ object ["First" .= x,
+                          "Operator" .= '-',
+                          "Second" .= y,
+                          "result" .= z] --json representation--
    where 
      z = x - y
 

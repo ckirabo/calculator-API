@@ -8,17 +8,7 @@ import Foundation
 import Yesod.Core
 import Data.Aeson
 import GHC.Generics
-
---haskell that interacts with the json side of things .. week 5 --
-
-data Calc = Calc {
-firstValue :: Int,
-secondValue :: Int,
-operator :: String,
-result :: Int
-} deriving (Generic)
-
-instance ToJSON Calc
+import Calc
 
 --getAddR already provided and used as the method to add--
 -- used frame work for all other operations--
@@ -27,7 +17,11 @@ getAddR x y = selectRep $ do
     provideRep $ defaultLayout $ do
         setTitle "Addition"
         [whamlet|#{x} + #{y} = #{z}|]
-    provideJson $ z
+    provideJson $ object ["First" .= x,
+                          "Operator" .= '+',
+                          "Second" .= y,
+                          "result" .= z]
+
   where
     z = x + y
  

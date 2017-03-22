@@ -13,6 +13,7 @@ import Sub
 import Home
 import Multi
 import Divide
+import Calc
 
 
 mkYesodDispatch "App" resourcesApp

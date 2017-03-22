@@ -8,29 +8,25 @@ import Foundation
 import Yesod.Core
 import Data.Aeson
 import GHC.Generics
+import Calc
 
 -- remember to take in consideration the constraints this will have--
 
-data Calc = Calc {
-firstValue :: Int,
-secondValue :: Int,
-operator :: String,
-result :: Int
-} deriving (Generic)
-
-instance ToJSON Calc
-
 getDivR :: Int -> Int -> Handler TypedContent
+-- getDivR _ 0 = "Invalid"
 getDivR x y = selectRep $ do
-	--if x = 0 let x = "Invalid Operation"
-    --    else if y = 0 then "Invalid Operation"
-    	-- for if it becomes a decimal round up 
     provideRep $ defaultLayout $ do
         setTitle "Divide"
         [whamlet|#{x} / #{y} = #{z}|]
-    provideJson $ z
+    provideJson $ object ["First" .= x,
+                          "Operator" .= '/',
+                          "Second" .= y,
+                          "result" .= z]--json representation--
   where
-    z = x / y
-    -- for if it becomes a decimal round up 
+    z = div x y
+    
 
- 
+-- fix "Invalid Operation" part used pattern matching. 
+-- for if it becomes a decimal round up 
+
+-- for line 23 used div as it divids as ints rather than as floating types when (x/y) is done 

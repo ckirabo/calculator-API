@@ -8,16 +8,8 @@ import Foundation
 import Yesod.Core
 import Data.Aeson
 import GHC.Generics
+import Calc
 
---haskell that interacts with the json side of things .. week 5 --
-data Calculator = Calculator{
-firstNumber :: Int,
-secondNumber :: Int,
-operator :: String,
-result :: Int    
-}deriving (Generic)
-
-instance ToJSON Calculator
 
 --getAddR already provided and used as the method to add--
 -- used frame work for all other operations--
@@ -26,7 +18,10 @@ getMultiR x y = selectRep $ do
     provideRep $ defaultLayout $ do
         setTitle "Multiplication"
         [whamlet|#{x} * #{y} = #{z}|]
-    provideJson $ z
+    provideJson $ object ["First" .= x,
+                          "Operator" .= '*',
+                          "Second" .= y,
+                          "result" .= z]--json representation--
   where
     z = x * y
  
