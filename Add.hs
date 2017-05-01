@@ -10,6 +10,7 @@ import Data.Aeson
 import GHC.Generics
 import Calc
 
+
 --getAddR already provided and used as the method to add--
 -- used frame work for all other operations--
 getAddR :: Int -> Int -> Handler TypedContent
@@ -21,6 +22,9 @@ getAddR x y = selectRep $ do
                           "Operator" .= '+',
                           "Second" .= y,
                           "result" .= z]
+
+
+                        
 
   where
     z = x + y
