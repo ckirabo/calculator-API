@@ -13,7 +13,7 @@ import Calc
 -- remember to take in consideration the constraints this will have--
 
 getDivR :: Int -> Int -> Handler TypedContent
--- getDivR _ 0 = "Invalid"
+-- getDivR _ 0 = "Invalid Operation"
 getDivR x y = selectRep $ do
     provideRep $ defaultLayout $ do
         setTitle "Divide"

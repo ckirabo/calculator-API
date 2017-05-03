@@ -20,6 +20,6 @@ executable          Kalk
   ghc-options:      -Wall -fwarn-tabs -O2
 
   build-depends:  base
-                , yesod-core , aeson
+                , yesod-core , aeson, sqlite-simple
 
   ghc-options:    -threaded -O2 -rtsopts -with-rtsopts=-N
