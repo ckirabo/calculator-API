@@ -14,7 +14,7 @@ import Home
 import Multi
 import Divide
 import Calc
---import Database--
+--import Database
 
 
 mkYesodDispatch "App" resourcesApp
