@@ -10,10 +10,8 @@ import Data.Aeson
 import GHC.Generics
 import Calc
 
--- remember to take in consideration the constraints this will have--
-
 getDivR :: Int -> Int -> Handler TypedContent
--- getDivR _ 0 = "Invalid Operation"
+-- getDivR _ 0 = "Invalid"
 getDivR x y = selectRep $ do
     provideRep $ defaultLayout $ do
         setTitle "Divide"
@@ -21,12 +19,6 @@ getDivR x y = selectRep $ do
     provideJson $ object ["First" .= x,
                           "Operator" .= '/',
                           "Second" .= y,
-                          "result" .= z]--json representation--
+                          "result" .= z]
   where
     z = div x y
-    
-
--- fix "Invalid Operation" part used pattern matching. 
--- for if it becomes a decimal round up 
-
--- for line 23 used div as it divids as ints rather than as floating types when (x/y) is done 

@@ -13,10 +13,10 @@ import Sub
 import Home
 import Multi
 import Divide
-import Calc
---import Database
+import Square
+import Power
 
 
 mkYesodDispatch "App" resourcesApp
 
---divide is next to add --
+

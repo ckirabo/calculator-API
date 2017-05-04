@@ -3,3 +3,5 @@
 /sub/#Int/#Int SubR  GET
 /multi/#Int/#Int MultiR GET
 /div/#Int/#Int DivR GET
+/sqr/#Int SquareR GET
+/pwr/#Int/#Int PowerR GET
